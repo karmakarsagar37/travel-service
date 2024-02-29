@@ -1,6 +1,6 @@
-# Travel Booking High Level Design Overview
+# Travel Booking Models High Level Design Overview
 
-Below is the high-level design for a travel booking system. The system is structured around several key models representing different aspects of travel and user interactions, including activities, destinations, passengers, and travel packages. Below is an overview of the models, their relationships, and key operations within the system.
+Below is the high-level design for a travel booking models. Following is an overview of the models, their relationships, and key operations within the system.
 
 ## Models
 
@@ -16,13 +16,14 @@ The `Activity` model represents an individual activity that can be a part of a t
 ### Destination
 
 The `Destination` model represents a travel destination, which can encompass multiple activities. It serves as a container for various activities available at a particular location.
+- Name
+- Activity
 
 ### Passenger (Abstract/Base Class)
 
 The `Passenger` model is an abstract base class that defines the common attributes and behaviors of all passenger types, which may include:
-
-- Passenger Number
 - Name
+- Passenger Number
 - Balance
 
 ### StandardPassenger
@@ -31,11 +32,11 @@ The `StandardPassenger` class inherits from `Passenger` and represents a standar
 
 ### GoldPassenger
 
-The `GoldPassenger` class, also inheriting from `Passenger`, represents a gold-tier passenger, possibly offering benefits such as 10 % discounts on activities.
+The `GoldPassenger` class, also inheriting from `Passenger`, represents a gold-tier passenger, offering benefits such as 10 % discounts on activities.
 
 ### PremiumPassenger
 
-The `PremiumPassenger` class is another subclass of `Passenger`, representing a premium-tier passenger with more benefits than a gold-tier passenger, offering enhanced perks and services.
+The `PremiumPassenger` class is also inheriting from `Passenger`, representing a premium-tier passenger with more benefits than a gold-tier passenger, offering free signup for activities for a passenger.
 
 ### TravelPackage
 
@@ -63,17 +64,24 @@ The `TravelPackage` model represents a collection of travel destinations and act
 
 ### Passenger.signUpForActivity(Activity)
 
-This method allows a passenger to sign up for an activity. The implementation might vary based on the passenger type, such as applying discounts for `GoldPassenger`.
+This method allows a passenger to sign up for an activity. The implementation might vary based on the passenger type, such as applying discounts for `GoldPassenger` or absolute free for `PremiumPassenger`.
 
 ### Destination.addActivity(Activity)
 
-This operation adds a new activity to a destination, expanding the available options for travelers.
+This operation adds a new activity to a destination, expanding the available options for `Passengers`.
 
 ### TravelPackage.addDestination(Destination)
 
 This method adds a new destination to a travel package, allowing for the creation of comprehensive travel experiences.
 
 ---
+
+## Low-Level Design Diagram
+
+Below is the Low-Level Design (LLD) diagram for the Travel Service Models, illustrating the detailed architectural and component interactions:
+
+![LLD Diagram](LLD.png)
+
 
 ## Running Tests
 
