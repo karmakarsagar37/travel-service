@@ -74,3 +74,11 @@ This operation adds a new activity to a destination, expanding the available opt
 This method adds a new destination to a travel package, allowing for the creation of comprehensive travel experiences.
 
 ---
+
+## Running Tests
+
+To execute the tests for this travel booking system, you can use the following Maven command:
+
+```bash
+mvn clean test
+```
